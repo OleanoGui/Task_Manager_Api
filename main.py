@@ -1,11 +1,13 @@
 from typing import Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
-from routes import router  # Importe o router do routes.py
+from routes import router
+from auth import router as auth_router
 
 
 app = FastAPI()
 
+app.include_router(auth_router)
 app.include_router(router) 
 
 class Item(BaseModel):
@@ -16,7 +18,7 @@ class Item(BaseModel):
 
 @app.get("/")
 def read_root():
-    return {"message": "Task Manager API is running!"}
+    return {"message": "Task Manager API is running for TEST"}
 
 @app.get("/TEST")
 def say_test():
