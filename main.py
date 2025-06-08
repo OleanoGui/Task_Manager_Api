@@ -22,20 +22,20 @@ def read_root():
 
 @app.get("/TEST")
 def say_test():
-    return {"message": "Olá, FastAPI!"}
+    return {"message": "Hello, FastAPI!"}
 
 @app.get("/user/{user_id}")
 def get_user(user_id: int):
-    return {"user_id": user_id, "message": f"Usuário {user_id} encontrado."}
+    return {"user_id": user_id, "message": f"User {user_id} Find."}
 
 @app.post("/items/")
 def create_item(item: Item):
-    return {"message": "Item criado!", "item": item}
+    return {"message": "Created item!", "item": item}
 
 @app.put("/items/{item_id}")
 def update_item(item_id: int, item: Item):
-    return {"message": f"Item {item_id} atualizado!", "item": item}
+    return {"message": f"Item {item_id} Updated!", "item": item}
 
 @app.delete("/items/{item_id}")
 def delete_item(item_id: int):
-    return {"message": f"Item {item_id} deletado!"}
+    return {"message": f"Item {item_id} deleted!"}

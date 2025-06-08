@@ -10,6 +10,9 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 router = APIRouter()
 
+def verify_token():
+    return "test_user"
+
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
 
@@ -24,7 +27,6 @@ def create_access_token(data: dict):
 
 @router.post("/login")
 def login(username: str, password: str):
-    # Simulação de usuário no banco de dados
     fake_user = {"username": "admin", "password": get_password_hash("123")}
     
     if username != fake_user["username"] or not verify_password(password, fake_user["password"]):

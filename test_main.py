@@ -6,10 +6,10 @@ client = TestClient(app)
 def test_read_root():
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"Task Manager API is running for TEST"}
+    assert response.json() == {"message": "Task Manager API is running for TEST"}
 
 def test_create_task():
-    response = client.post("/tasks/", json={"title": "Nova Tarefa", "description": "Descrição da tarefa"})
+    response = client.post("/tasks/", json={"title": "new task", "description": "Description of new task"})
     assert response.status_code == 200
     assert response.json()["title"] == "new task"
 
